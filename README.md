@@ -2,9 +2,19 @@
 This Repository will contains various tools,scripts,commands used in Active Directory Enumeration
 
 
-## Domain Enumeration
+# Domain Enumeration
 
-# Computer Objects Enumeration
+## User Enumeration
+Get-Domain Policy
+Get-netdomain
+Get-NetdomainController
+
+Get-netuser
+Get-netuser -username test123
+Get-NetLoggedon -Computername server16 : It will tell all the users which are actively logged on to the computer.
+Get-loggedonLocally : It will list all users who are logged in locally on the computer.
+Get-LastLoggedon -Computername server016 : It will list user which have last logged on to the computer.
+## Computer Objects Enumeration
 
 ```
 Get-NetComputer : It will list down all the computer object in the domain
@@ -15,7 +25,7 @@ Get-Netcomputer -Ping : It will check which of the computer objects are live in 
 
 ```
 
-# Group Enumeration
+## Group Enumeration
 
 ```
 Get-NetGroup: It will list down all the groups 
