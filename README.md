@@ -102,10 +102,10 @@ Invoke-Userhunter -CheckAccess : To confirm admin access
 ### AS-REP Roasting
 
 - Enumerating Account with Preauth Disabled
--    Get-DomainUser -PreauthNotRequired -Verbose
+-     Get-DomainUser -PreauthNotRequired -Verbose
 - Requesting Encrypted AS-REP for offline brueforcing
--    Get-ASRepHash -Username studentx -verbose
+-     Get-ASRepHash -Username studentx -verbose
   
-### Unconstrained Dlegation
+### Unconstrained Delegation
   
 
