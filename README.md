@@ -44,3 +44,35 @@ Get-netlocalgroup -computername xyz-dc.abc.local" List all local group on a mach
 
 ## GPO Enumeration
 
+### Group Policy allows you to centralize the management of computers on your network without having to physically go to and configure each computer individually. 
+```
+Get-NetGPO : List all the GPO in the current domain
+Get-NetGPO -cpmputername xyz-dc.acbc.local : Get all GPOs of a particuler machine
+Find-GPOComputerAdmin -computername xz-dc.abc.local: Get users which are in local group of a machine Using GPO
+
+```
+## OU Enumeration
+```
+Get-NetOU -Fulldata : Give info about the OUs in a domain.
+```
+
+## ACL Enumeration
+
+### ACL Stands for Access Control List , which comprises of ACEs, Access Control Entries. ACEs corresponds to individual permissions or audit access , which means ACEs will tell who has what permission on an object
+
+```
+Get-ObjectACL -Samaccountname studentx  -ResolveGUIDs : Will give ACL associated with user "studentx".
+Invoke-ACLScanner -ResolveGUIDs: will give all the interesting ACEs.
+```
+
+## Interesting User Hunting
+
+```
+Find-LocalAdminAccess  -Verbose : It will give you list of all machines in current domain 
+Invoke-EnumerateLocalAdmin -verbose: Find all local admins on all machine  of current domain.
+
+Invoke-Userhunter: Find computer where a domain admin has sessions.
+Invoke-Userhunter  -GroupName  "RDPUsers" : Find computers where a "RDPUsers" has sessions.
+Invoke-Userhunter -CheckAccess : To confirm admin access
+Invoke-UserHunter 
+
