@@ -156,3 +156,6 @@ Invoke-Userhunter -CheckAccess : To confirm admin access
 - Executing Commands on SQL Server (XP_cmdshell should be enabled on the server)
 -      Get-SQLServrLinkCrawler -instance abc-mssql  -Query  "exec master..xp_cmdshell 'whoami'"
   
+  
+## Persistence
+  
