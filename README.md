@@ -1,5 +1,5 @@
 # Active-Directory
-This Repository will contains various tools,scripts and commands used in Active Directory Enumeration and Exploitation
+This Repository will contains various tools,scripts and commands used in Active Directory Enumeration and Exploitation Using tools like Powerview, Mimikatz, Rubeus, etc. which helped me in my CRTP lab.
 
 
 ## Domain Enumeration
