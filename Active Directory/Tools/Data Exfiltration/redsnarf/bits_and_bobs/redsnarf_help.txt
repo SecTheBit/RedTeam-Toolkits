@@ -1,0 +1,80 @@
+root@kali:~/redsnarf# ./redsnarf.py -h
+
+   ______           .____________                     _____
+\______   \ ____   __| _/   _____/ ____ _____ ________/ ____\
+ |       _// __ \ / __ |\_____  \ /    \__  \_  __ \   __\
+ |    |   \  ___// /_/ |/        \   |  \/ __ \|  | \/|  |
+ |____|_  /\___  >____ /_______  /___|  (____  /__|   |__|
+        \/     \/     \/       \/     \/     \/
+
+
+
+E D Williams - NCCGroup
+
+
+usage: ./redsnarf.py -H ip=192.168.0.1 -u administrator -p Password01 [-h] [-v] [-H HOST] [-u USERNAME] [-p PASSWORD] [-d DOMAIN_NAME] [-cC CREDPATH]
+                                                                      [-cO OUTPUTPATH] [-cM MERGEPF] [-cS SKIPLSACACHE] [-uP POLICIESSCRIPTS_DUMP]
+                                                                      [-uG C_PASSWORD] [-uD DROPSHELL] [-uX XCOMMAND] [-hN NTDS_UTIL] [-hI DRSUAPI]
+                                                                      [-hS CREDSFILE] [-hL LSASS_DUMP] [-hM MASSMIMI_DUMP] [-hR STEALTH_MIMI]
+                                                                      [-eA SERVICE_ACCOUNTS] [-eL FIND_USER] [-eO OFIND_USER] [-rL LAT] [-rR EDQ_RDP]
+                                                                      [-rN EDQ_NLA] [-rT EDQ_TRDP] [-rW EDQ_WDIGEST] [-rB EDQ_BACKDOOR] [-rU EDQ_UAC]
+
+optional arguments:
+  -h, --help        show this help message and exit
+  -v, --version     show program's version number and exit
+  -H HOST, --host HOST
+                    Specify a hostname -H ip= / range -H range= / targets file -H file= to grab hashes from
+  -u USERNAME, --username USERNAME
+                    Enter a username
+  -p PASSWORD, --password PASSWORD
+                    Enter a password or hash
+  -d DOMAIN_NAME, --domain_name DOMAIN_NAME
+                    <Optional> Enter domain name
+  -cC CREDPATH, --credpath CREDPATH
+                    <Optional> Enter path to creddump7 default /opt/creddump7/
+  -cO OUTPUTPATH, --outputpath OUTPUTPATH
+                    <Optional> Enter output path default /tmp/
+  -cM MERGEPF, --mergepf MERGEPF
+                    <Optional> Enter output path and filename to merge multiple pwdump files default /tmp/merged.txt
+  -cS SKIPLSACACHE, --skiplsacache SKIPLSACACHE
+                    <Optional> Enter y to skip dumping lsa and cache and go straight to hashes!!
+  -uP POLICIESSCRIPTS_DUMP, --policiesscripts_dump POLICIESSCRIPTS_DUMP
+                    <Optional> Enter y to Dump Policies and Scripts folder from a Domain Controller
+  -uG C_PASSWORD, --c_password C_PASSWORD
+                    <Optional> Decrypt GPP Cpassword
+  -uD DROPSHELL, --dropshell DROPSHELL
+                    <Optional> Enter y to Open up a shell on the remote machine
+  -uX XCOMMAND, --xcommand XCOMMAND
+                    <Optional> Run custom command
+  -hN NTDS_UTIL, --ntds_util NTDS_UTIL
+                    <Optional> Extract NTDS.dit using NTDSUtil
+  -hI DRSUAPI, --drsuapi DRSUAPI
+                    <Optional> Extract NTDS.dit hashes using drsuapi method - accepts machine name as username
+  -hS CREDSFILE, --credsfile CREDSFILE
+                    Spray multiple hashes at a target range
+  -hL LSASS_DUMP, --lsass_dump LSASS_DUMP
+                    <Optional> Dump lsass for offline use with mimikatz
+  -hM MASSMIMI_DUMP, --massmimi_dump MASSMIMI_DUMP
+                    <Optional> Mimikatz Dump Credentials from the remote machine(s)
+  -hR STEALTH_MIMI, --stealth_mimi STEALTH_MIMI
+                    <Optional> stealth version of mass-mimikatz
+  -eA SERVICE_ACCOUNTS, --service_accounts SERVICE_ACCOUNTS
+                    <Optional> Enum service accounts, if any
+  -eL FIND_USER, --find_user FIND_USER
+                    <Optional> Find user - Live
+  -eO OFIND_USER, --ofind_user OFIND_USER
+                    <Optional> Find user - Offline
+  -rL LAT, --lat LAT
+                    <Optional> Write batch file for turning on/off Local Account Token Filter Policy
+  -rR EDQ_RDP, --edq_rdp EDQ_RDP
+                    <Optional> (E)nable/(D)isable/(Q)uery RDP Status
+  -rN EDQ_NLA, --edq_nla EDQ_NLA
+                    <Optional> (E)nable/(D)isable/(Q)uery NLA Status
+  -rT EDQ_TRDP, --edq_trdp EDQ_TRDP
+                    <Optional> (E)nable/(D)isable/(Q)uery Tunnel RDP out of port 443
+  -rW EDQ_WDIGEST, --edq_wdigest EDQ_WDIGEST
+                    <Optional> (E)nable/(D)isable/(Q)uery Wdigest UseLogonCredential Registry Setting
+  -rB EDQ_BACKDOOR, --edq_backdoor EDQ_BACKDOOR
+                    <Optional> (E)nable/(D)isable/(Q)uery Backdoor Registry Setting - Left Alt + Left Shift + Print Screen at Logon Screen
+  -rU EDQ_UAC, --edq_uac EDQ_UAC
+                    <Optional> (E)nable/(D)isable/(Q)uery UAC Registry Setting
