@@ -15,9 +15,9 @@ The following table maps the tools in this repository to MITRE ATT&CK (Adversari
 | Tool Name              | MITRE Tactics                         |
 |------------------------|-------------------------------------|
 | Modlishka               | Phishing           |
-| Redsnarf              | Credential stealinmg             | 
+| Redsnarf              | Exfiltration            | 
 | ADRecon                    | Reconnaissance                                 |
-| ADACLScanner |  Reconnaisance | 
+| ADACLScanner |  Reconnaissance | 
 
 *Note: This table provides a brief overview. Detailed documentation for each tool can be found in their respective directories.*
 
