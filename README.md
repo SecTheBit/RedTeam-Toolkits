@@ -21,28 +21,6 @@ The following table maps the tools in this repository to MITRE ATT&CK (Adversari
 
 *Note: This table provides a brief overview. Detailed documentation for each tool can be found in their respective directories.*
 
-### PhishGen
-
-#### Description
-
-PhishGen is a phishing email generation tool that allows Red Teamers to create realistic phishing scenarios for testing and awareness purposes.
-
-#### MITRE Technique(s)
-
-- T1566.001: Phishing - Spearphishing Attachment
-- T1566.002: Phishing - Spearphishing Link
-
-### CredSniff
-
-#### Description
-
-CredSniff is a credential sniffing tool designed to capture and analyze network traffic for sensitive information.
-
-#### MITRE Technique(s)
-
-- T1003.001: Credential Dumping - LSASS Memory
-
-### ...
 
 ## Contributing
 
